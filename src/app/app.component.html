@@ -1,3 +1,56 @@
+<div class="container-fluid min-vh-100" style="background-color:aliceblue;">
+  <div class="col-12 p-xs-0 p-md-5">
 
+    <div class="col-12 text-center m-auto pt-5">
+      <h2 class="title" style="color: steelblue;">Subscription Form</h2>
+    </div>
+
+    <div class="col-12 text-center m-auto p-3">
+      <div class="row">
+        <p class="desc">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="col-12 p-0">
+      <form [formGroup]="formGroup" (validSubmit)="onSubmit()" novalidate>
+        <div class="row">
+
+          <div class="col-12 col-md-6 col-xl-4 m-auto">
+            <div class="form-group">
+              <label class="control-label">Name</label>
+              <input type="text" class="form-control" formControlName="Name" placeholder="Your Name">
+            </div>
+          </div>
+          
+          <div class="col-12 col-md-6 col-xl-4 m-auto">
+            <div class="form-group">
+              <label class="control-label">Email</label>
+              <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp" placeholder="Your email">
+            </div>
+          </div>
+          
+
+          <div class="col-12 col-md-6 col-xl-4 m-auto">
+            <div class="form-group">
+              <label class="control-label">Phone</label>
+              <input type="text" class="form-control" formControlName="Phone" placeholder="623456789">
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <div class="form-group">
+              <button type="submit" [disabled]="formGroup.invalid" class="btn btn-primary">Add subscription</button>
+            </div>
+          </div>
+        
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
