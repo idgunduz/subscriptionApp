@@ -16,17 +16,17 @@
     </div>
 
     <div class="col-12 p-0">
-      <form [formGroup]="formGroup" (validSubmit)="onSubmit()" novalidate>
+      <form [formGroup]="formGroup" (validSubmit)="onSubmit(formGroup.value)" novalidate>
         <div class="row">
 
-          <div class="col-12 col-md-6 col-xl-4 m-auto">
+          <div class="col-12 col-md-6 col-xl-4 mx-auto my-3">
             <div class="form-group">
               <label class="control-label">Name</label>
               <input type="text" class="form-control" formControlName="Name" placeholder="Your Name">
             </div>
           </div>
           
-          <div class="col-12 col-md-6 col-xl-4 m-auto">
+          <div class="col-12 col-md-6 col-xl-4 mx-auto my-3">
             <div class="form-group">
               <label class="control-label">Email</label>
               <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp" placeholder="Your email">
@@ -34,19 +34,43 @@
           </div>
           
 
-          <div class="col-12 col-md-6 col-xl-4 m-auto">
+          <div class="col-12 col-md-6 col-xl-4 mx-auto my-3">
             <div class="form-group">
               <label class="control-label">Phone</label>
               <input type="text" class="form-control" formControlName="Phone" placeholder="623456789">
             </div>
           </div>
 
-          <div class="col-12 text-center">
+          <div class="col-12 text-center my-3">
             <div class="form-group">
               <button type="submit" [disabled]="formGroup.invalid" class="btn btn-primary">Add subscription</button>
             </div>
           </div>
         
+          <div class="col-12 text-center">
+            <ngb-alert #selfClosingAlert *ngIf="successMessage && isSaved" type="success" (closed)="successMessage = ''">{{ successMessage }}
+            </ngb-alert>
+          </div>
+
+          <ng-container *ngIf="showSuscribers">
+            <div class="col-md-6 col-xl-4 mx-auto my-3" *ngFor="let subs of subscribers">
+              <div class="card shadow" style="width: 100%; border-radius: 5%;">
+                <div class="card-body">
+                  <div class="row ml-1">
+                    <strong class="mr-2">Name: </strong><p> {{subs.name}}</p>
+                  </div>
+                  <div class="row ml-1">
+                    <strong class="mr-2">Email: </strong><p> {{subs.email}}</p>
+                  </div>
+                  <div class="row ml-1">
+                    <strong class="mr-2">Phone: </strong><p> {{subs.phone}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          
+
         </div>
       </form>
     </div>

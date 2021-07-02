@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgBootstrapFormValidationModule } from 'ng-bootstrap-form-validation';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { DataService } from './data/data.services';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     NgBootstrapFormValidationModule.forRoot(),
     NgBootstrapFormValidationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientInMemoryWebApiModule.forRoot(DataService),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
