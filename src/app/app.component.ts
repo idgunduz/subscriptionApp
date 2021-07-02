@@ -13,6 +13,7 @@ import { SubscriberService } from './services/subscriber.service';
 })
 export class AppComponent {
   
+  title = 'SubscriptionApp';
   private _success = new Subject<string>();
   subscriber = {
     id: null,
@@ -21,7 +22,6 @@ export class AppComponent {
     phone: null
   }
   subscribers: Subscriber[];
-  title = 'SubscriptionApp';
   formGroup: FormGroup;
   isSaved: boolean = false;
   showSuscribers: boolean = false;
@@ -37,7 +37,7 @@ export class AppComponent {
      new FormGroup({
       Email: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+        Validators.email
       ]),
       Phone: new FormControl('', [
         Validators.required,
