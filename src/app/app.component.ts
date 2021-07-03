@@ -30,24 +30,21 @@ export class AppComponent {
   
   constructor(private subscriberService: SubscriberService) {}
   
+  name: FormControl;
+  phone: FormControl;
+  email: FormControl;
 
   ngOnInit() {
     this.getSubscribers();
-    this.formGroup =
-     new FormGroup({
-      Email: new FormControl('', [
-        Validators.required,
-        Validators.email
-      ]),
-      Phone: new FormControl('', [
-        Validators.required,
-        Validators.minLength(9),
-        Validators.pattern('^[6]+[0-9]*$')
-      ]),
-      Name: new FormControl('', [
-        Validators.required,
-      ])
+    this.phone = new FormControl('', [Validators.required , Validators.minLength(9), Validators.pattern('^[6]+[0-9]*$')]);
+    this.name = new FormControl('', Validators.required);
+    this.email = new FormControl('', [Validators.required, Validators.email]);
+    this.formGroup = new FormGroup({
+      'Name': this.name,
+      'Phone': this.phone,
+      'Email': this.email,
     });
+  
     this._success.subscribe(message => this.successMessage = message);
     this._success.pipe(debounceTime(5000)).subscribe(() => {
       if (this.selfClosingAlert) {

@@ -22,14 +22,14 @@
           <div class="col-12 col-md-6 col-xl-4 mx-auto my-1 my-md-3">
             <div class="form-group">
               <label class="control-label">Name</label>
-              <input type="text" class="form-control" formControlName="Name" placeholder="Your Name">
+              <input type="text" class="form-control" formControlName="Name" placeholder="Your Name" [ngClass]="{'is-invalid': name.errors && (name.touched || name.dirty)}">
             </div>
           </div>
           
           <div class="col-12 col-md-6 col-xl-4 mx-auto my-1 my-md-3">
             <div class="form-group">
               <label class="control-label">Email</label>
-              <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp" placeholder="Your email">
+              <input type="email" class="form-control" formControlName="Email" aria-describedby="emailHelp" placeholder="Your email" [ngClass]="{'is-invalid': email.errors && (email.touched || email.dirty)}">
             </div>
           </div>
           
@@ -37,7 +37,7 @@
           <div class="col-12 col-md-6 col-xl-4 mx-auto my-1 my-md-3">
             <div class="form-group">
               <label class="control-label">Phone</label>
-              <input type="text" class="form-control" formControlName="Phone" placeholder="623456789">
+              <input type="text" class="form-control" formControlName="Phone" placeholder="623456789" [ngClass]="{'is-invalid': phone.errors && (phone.touched || phone.dirty)}">
             </div>
           </div>
 
